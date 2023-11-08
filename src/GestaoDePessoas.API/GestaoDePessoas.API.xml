@@ -1,0 +1,153 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>GestaoDePessoas.API</name>
+    </assembly>
+    <members>
+        <member name="M:GestaoDePessoas.API.V1.Controllers.Numeros.PessoaController.Post(GestaoDePessoas.Application.ViewModels.Produto.PessoaAdicionarViewModel)">
+             <summary>
+             Cadastra nova Pessoa
+             </summary>
+             <param name="viewmodel">Dto para o post</param>
+             <returns></returns>
+             /// <remarks>
+             Exemplo de requisição
+            
+                 POST /api/v1/pessoa
+                 {
+                   "nomeCompleto": "string",
+                   "cnpJ_CPF": "string",
+                   "email": "string",
+                   "telefone": "string",
+                   "cep": "string",
+                   "estado": "string",
+                   "cidade": "string",
+                   "bairro": "string",
+                   "numero": "string",
+                   "logradouro": "string",
+                   "ativo": true
+                 }
+                 
+                 nomeCompleto -> Deve ter no mínimo 5 e no máximo 250 caracteres (É obrigatório);
+                 cnpJ_CPF -> Deve ter no mínimo 11 e no máximo 14 caracteres (É obrigatório);
+                 email -> É obrigatório;
+                 telefone -> Deve ter no máximo 12 caracteres (É opcional);
+                 cep -> É obrigatório;
+                 estado -> Deve ter no mínimo 3 e no máximo 50 caracteres (É obrigatório);
+                 cidade -> Deve ter no mínimo 3 e no máximo 100 caracteres (É obrigatório);
+                 bairro -> Deve ter no mínimo 3 e no máximo 150 caracteres (É obrigatório);
+                 logradouro -> Deve ter no mínimo 3 e no máximo 150 caracteres (É obrigatório);    
+                
+                 A aplicação impõe uma restrição que permite o cadastro de um número de CPF ou CNPJ uma única vez. Isso garante a unicidade dos registros e impede duplicações no sistema.
+                 Obs: Certifique-se de inserir um número de CPF ou CNPJ válido e único para cada registro.
+             </remarks>
+             <response code="200">Cadastro realizado com sucesso.</response>
+             <response code="400">Não foi possível realizar o cadastro com sucesso.</response>
+             
+        </member>
+        <member name="M:GestaoDePessoas.API.V1.Controllers.Numeros.PessoaController.Put(System.Guid,GestaoDePessoas.Application.ViewModels.Pessoa.PessoaAtualizarViewModel)">
+             <summary>
+             Atualiza o registro de Pessoa
+             </summary>
+             <param name="viewmodel">Dto para o put</param>
+             <returns></returns>
+             /// <remarks>
+             Exemplo de requisição
+            
+                 PUT /api/v1/pessoa
+                 {
+                   "id": "3fa85f64-5717-4562-b3fc-2c963f66afa6",
+                   "nomeCompleto": "string",
+                   "cnpJ_CPF": "string",
+                   "email": "string",
+                   "telefone": "string",
+                   "cep": "string",
+                   "estado": "string",
+                   "cidade": "string",
+                   "bairro": "string",
+                   "numero": "string",
+                   "logradouro": "string",
+                   "ativo": true
+                 }
+                 
+                 id -> É obrigatório;
+                 nomeCompleto -> Deve ter no mínimo 5 e no máximo 250 caracteres (É obrigatório);
+                 cnpJ_CPF -> Deve ter no mínimo 11 e no máximo 14 caracteres (É obrigatório);
+                 email -> É obrigatório;
+                 telefone -> Deve ter no máximo 12 caracteres (É opcional);
+                 cep -> É obrigatório;
+                 estado -> Deve ter no mínimo 3 e no máximo 50 caracteres (É obrigatório);
+                 cidade -> Deve ter no mínimo 3 e no máximo 100 caracteres (É obrigatório);
+                 bairro -> Deve ter no mínimo 3 e no máximo 150 caracteres (É obrigatório);
+                 logradouro -> Deve ter no mínimo 3 e no máximo 150 caracteres (É obrigatório);
+            
+                 Obs: O valor do campo "id" deve coincidir com o valor fornecido na consulta.
+             </remarks>
+             <response code="200">Alteração realizada com sucesso.</response>
+             <response code="400">Não foi possível realizar a alteração com sucesso.</response>
+             
+        </member>
+        <member name="M:GestaoDePessoas.API.V1.Controllers.Numeros.PessoaController.Delete(System.Guid)">
+             <summary>
+             Remove o registro de Pessoa
+             </summary>
+             <returns></returns>
+             /// <remarks>
+             Exemplo de requisição
+            
+                 DEL /api/v1/pessoa/00000000-0000-0000-0000-000000000000
+                 {
+                 }
+                 
+                 Campos obrigatórios: id.
+            
+             </remarks>
+             <response code="200">O recurso solicitado foi processado e retornado com sucesso.</response>
+             <response code="400">Bad Request - Não foi possível interpretar a requisição. Verifique a sintaxe das informações enviadas</response>
+            
+        </member>
+        <member name="M:GestaoDePessoas.API.V1.Controllers.Numeros.PessoaController.Get(System.Guid)">
+             <summary>
+             Retorna registro de Pessoa por Id (guid)
+             </summary>
+             <returns></returns>
+             /// <remarks>
+             Exemplo de requisição
+            
+                 GET /api/v1/pessoa/00000000-0000-0000-0000-000000000000
+                 {
+                 }
+                 
+                 Campos obrigatórios: id.
+            
+             </remarks>
+             <response code="200">O recurso solicitado foi processado e retornado com sucesso.</response>
+             <response code="400">Bad Request - Não foi possível interpretar a requisição. Verifique a sintaxe das informações enviadas</response>
+            
+        </member>
+        <member name="M:GestaoDePessoas.API.V1.Controllers.Numeros.PessoaController.GetPorTodosOsFiltros(System.Nullable{System.Boolean},System.Nullable{System.Int32},System.Nullable{System.Int32},System.String)">
+             <summary>
+             Retorna lista paginada de Pessoas
+             </summary>
+             <returns></returns>
+             /// <remarks>
+             Exemplo de requisição
+            
+                 GET /api/v1/pessoa
+                 {
+                 }    
+            
+                 Filtro de Consulta:
+                 É possível realizar consultas de registros de pessoas com base nos seguintes campos: Nome Completo, CPF/CNPJ, Logradouro e Bairro.
+             
+             </remarks>
+             <param name="ativo">Status do registro Ativo ou Desativado.</param>
+             <param name="pagina">Página da lista de item.</param>
+             <param name="tamanhoPagina">Total de itens por página.</param>
+             <param name="filtro">Filtro de acordo com os campos disponíveis.</param>
+             <response code="200">O recurso solicitado foi processado e retornado com sucesso.</response>
+             <response code="400">Bad Request - Não foi possível interpretar a requisição. Verifique a sintaxe das informações enviadas</response>
+            
+        </member>
+    </members>
+</doc>

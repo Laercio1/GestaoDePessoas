@@ -1,0 +1,8 @@
+version: '3.4'
+
+services:
+  gestaodepessoas.api:
+    image: ${DOCKER_REGISTRY-}gestaodepessoasapi
+    build:
+      context: .
+      dockerfile: src\GestaoDePessoas.API\Dockerfile
