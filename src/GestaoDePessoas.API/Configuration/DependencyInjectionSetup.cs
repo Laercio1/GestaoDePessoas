@@ -1,5 +1,4 @@
 ﻿using GestaoDePessoas.Infra.CrossCutting.Ioc;
-using GestaoDePessoas.Infra.CrossCutting.Ioc;
 
 namespace GestaoDePessoas.Services.API.Configurations
 {

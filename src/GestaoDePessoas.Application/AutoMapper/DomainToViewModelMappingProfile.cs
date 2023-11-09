@@ -1,6 +1,5 @@
 ﻿using AutoMapper;
 using GestaoDePessoas.Application.ViewModels.Pessoa;
-using GestaoDePessoas.Application.ViewModels.Produto;
 using GestaoDePessoas.Dominio.PessoaRoot;
 
 namespace GestaoDePessoas.Application.AutoMapper

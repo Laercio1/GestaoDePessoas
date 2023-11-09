@@ -1,14 +1,14 @@
 ﻿using AutoMapper;
 using GestaoDePessoas.Application.Services.Base;
 using GestaoDePessoas.Application.ViewModels.Pessoa;
-using GestaoDePessoas.Application.Interfaces.Produtos;
 using GestaoDePessoas.Application.Notificacoes;
-using GestaoDePessoas.Application.ViewModels.Produto;
 using GestaoDePessoas.Dominio.PessoaRoot.Repository;
 using GestaoDePessoas.Dominio.PessoaRoot.Validation;
 using GestaoDePessoas.Dominio.PessoaRoot;
+using GestaoDePessoas.Dominio.Core.Utils.StringUtils;
+using GestaoDePessoas.Application.Interfaces.Pessoas;
 
-namespace GestaoDePessoas.Application.Services.Numeros
+namespace GestaoDePessoas.Application.Services.Pessoas
 {
     public class PessoaService : BaseCadastroService<Pessoa,
         PessoaViewModel,
@@ -35,10 +35,22 @@ namespace GestaoDePessoas.Application.Services.Numeros
 
         public override bool ValidarAdicionarModel(Pessoa model)
         {
-            //if (_repository.EExisteCadastroMesmoCPFCNPJ(model) != null)
-            //    Notificar("Já existe {0} com o mesmo número de CPF/CNPJ cadastrado.", _NomeDominio);
-
-            return true;
+            if (model.CNPJ_CPF.Length == 11 && !StringUtils.ValidaCPF(model.CNPJ_CPF))
+            {
+                Notificar("O CPF da {0} informado é inválido.", _NomeDominio);
+                return false;
+            }
+            else if (model.CNPJ_CPF.Length == 14 && !StringUtils.ValidaCNPJ(model.CNPJ_CPF))
+            {
+                Notificar("O CNPJ da {0} informado é inválido.", _NomeDominio);
+                return false;
+            }
+            else if (_repository.EExisteCadastroMesmoCPFCNPJ(model) > 0)
+            {
+                Notificar("Já existe uma {0} com o mesmo número de CPF/CNPJ cadastrado.", _NomeDominio);
+                return false;
+            }
+            else return true;
         }
 
         public void LimparListaNotificacao()

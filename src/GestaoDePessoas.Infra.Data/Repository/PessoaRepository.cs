@@ -4,6 +4,7 @@ using GestaoDePessoas.Infra.Data.Repository.Base;
 using Microsoft.EntityFrameworkCore;
 using GestaoDePessoas.Dominio.PessoaRoot;
 using GestaoDePessoas.Dominio.PessoaRoot.Repository;
+using GestaoDePessoas.Dominio.Core.Utils.StringUtils;
 
 namespace GestaoDePessoas.Infra.Data.Repository
 {
@@ -20,18 +21,18 @@ namespace GestaoDePessoas.Infra.Data.Repository
 
             _consulta = _consulta.Where(fp => fp.CNPJ_CPF.Equals(cpf_cnpj));
 
-            var recebeu = _consulta.Where(l => l.CNPJ_CPF == cpf_cnpj).FirstOrDefault();
+            var consulta = _consulta.Where(l => l.CNPJ_CPF == cpf_cnpj).FirstOrDefault();
 
-            return recebeu.Id;
+            return consulta.Id;
         }
 
-        public async Task<Pessoa> EExisteCadastroMesmoCPFCNPJ(Pessoa model)
+        public int EExisteCadastroMesmoCPFCNPJ(Pessoa model)
         {
-            var dependente = ReturnIQueryable();
+            var _consulta = ReturnIQueryable();
 
-            dependente = dependente.Where(c => c.CNPJ_CPF.ToLower().Contains(model.CNPJ_CPF.ToLower()));
+            var consulta = _consulta.Where(c => c.CNPJ_CPF.ToLower().Contains(StringUtils.ApenasNumeros(model.CNPJ_CPF.ToLower()))).ToList();
 
-            return await dependente.FirstOrDefaultAsync();
+            return consulta.Count;
         }
 
         public async Task<ListaPaginada<Pessoa>> ObterPorTodosFiltros(bool? ativo, int? pagina, int? tamanhoPagina, string filtro)
@@ -42,11 +43,11 @@ namespace GestaoDePessoas.Infra.Data.Repository
 
             if (!string.IsNullOrEmpty(filtro))
             {
-                    _consulta = _consulta.AsNoTracking()
-                 .Where(e => (e.NomeCompleto.ToLower().Contains(filtro.ToLower()) ||
-                              e.CNPJ_CPF.ToLower().Contains(filtro.ToLower()) ||
-                              e.Logradouro.ToLower().Contains(filtro.ToLower()) ||
-                              e.Bairro.ToLower().Contains(filtro.ToLower())))
+                _consulta = _consulta.AsNoTracking()
+                .Where(e => (e.NomeCompleto.ToLower().Contains(filtro.ToLower()) ||
+                          e.CNPJ_CPF.ToLower() == StringUtils.ApenasNumeros(filtro.ToLower()) ||
+                          e.Logradouro.ToLower() == filtro.ToLower() ||
+                          e.Bairro.ToLower() == (filtro.ToLower())))
                 .OrderBy(e => e.NomeCompleto);
             }
 

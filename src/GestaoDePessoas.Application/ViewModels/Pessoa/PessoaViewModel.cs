@@ -4,6 +4,7 @@ namespace GestaoDePessoas.Application.ViewModels.Pessoa
 {
     public class PessoaViewModel : BaseViewModelCadastro
     {
+        public DateTime DataCadastro { get; set; }
         public string Id { get; set; }
         public string NomeCompleto { get; set; }
         public string CNPJ_CPF { get; set; }

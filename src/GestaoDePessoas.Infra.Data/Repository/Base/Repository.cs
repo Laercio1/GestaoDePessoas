@@ -17,16 +17,16 @@ namespace GestaoDePessoas.Infra.Data.Repository.Base
 
         protected PaginatedList<TEntity> _paginated { get; set; }
 
-        protected async Task<PaginatedList<TEntity>> ReturnPaginatedList(IQueryable<TEntity> source, int? pageIndex = 1, int? pageSize = 50)
+        protected async Task<PaginatedList<TEntity>> ReturnPaginatedList(IQueryable<TEntity> source, int? pageIndex = 1, int? pageSize = 25)
         {
             if (!pageIndex.HasValue || pageIndex < 1)
             {
                 pageIndex = 1;
             }
 
-            if (!pageSize.HasValue || (pageSize < 1 || pageSize > 50))
+            if (!pageSize.HasValue || (pageSize < 1 || pageSize > 25))
             {
-                pageSize = 50;
+                pageSize = 25;
             }
 
             return await PaginatedList<TEntity>.CreateAsync(source, pageIndex.Value, pageSize.Value);

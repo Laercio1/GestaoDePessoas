@@ -3,31 +3,26 @@ using System;
 using GestaoDePessoas.Infra.Data.Context;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
-using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace GestaoDePessoa.Infra.Data.Migrations
+namespace GestaoDePessoas.Infra.Data.Migrations
 {
     [DbContext(typeof(GestaoDePessoasContext))]
-    [Migration("20231108005304_Initial")]
+    [Migration("20231109135147_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
-            modelBuilder
-                .HasAnnotation("ProductVersion", "7.0.5")
-                .HasAnnotation("Relational:MaxIdentifierLength", 128);
+            modelBuilder.HasAnnotation("ProductVersion", "7.0.13");
 
-            // SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
-
-            modelBuilder.Entity("OperacaoMatematica.Dominio.PessoaRoot.Pessoa", b =>
+            modelBuilder.Entity("GestaoDePessoas.Dominio.PessoaRoot.Pessoa", b =>
                 {
-                    b.Property<string>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("char(36)")
                         .HasColumnName("Id");
@@ -48,7 +43,7 @@ namespace GestaoDePessoa.Infra.Data.Migrations
 
                     b.Property<string>("CNPJ_CPF")
                         .IsRequired()
-                        .HasColumnType("varchar(18)")
+                        .HasColumnType("varchar(14)")
                         .HasColumnName("cnpj_cpf");
 
                     b.Property<string>("Cidade")

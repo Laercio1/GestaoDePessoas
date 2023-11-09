@@ -2,10 +2,10 @@
 using GestaoDePessoas.Infra.Data.Repository;
 using Microsoft.AspNetCore.Http;
 using Microsoft.Extensions.DependencyInjection;
-using GestaoDePessoas.Application.Interfaces.Produtos;
 using GestaoDePessoas.Application.Notificacoes;
-using GestaoDePessoas.Application.Services.Numeros;
 using GestaoDePessoas.Dominio.PessoaRoot.Repository;
+using GestaoDePessoas.Application.Interfaces.Pessoas;
+using GestaoDePessoas.Application.Services.Pessoas;
 
 namespace GestaoDePessoas.Infra.CrossCutting.Ioc
 {

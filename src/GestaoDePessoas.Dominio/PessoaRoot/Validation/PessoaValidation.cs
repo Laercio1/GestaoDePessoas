@@ -40,6 +40,9 @@ namespace GestaoDePessoas.Dominio.PessoaRoot.Validation
                 .NotEmpty().WithMessage("O campo {PropertyName} é obrigatório.")
                 .Length(3, 150).WithMessage("O campo {PropertyName} precisa ter entre {MinLength} e {MaxLength} caracteres.");
 
+            RuleFor(c => c.Numero)
+                .MaximumLength(50).WithMessage("O campo {PropertyName} deve ter menos de {MaxLength} caracteres.");
+
             RuleFor(c => c.Logradouro)
                 .NotEmpty().WithMessage("O campo {PropertyName} é obrigatório.")
                 .Length(3, 150).WithMessage("O campo {PropertyName} precisa ter entre {MinLength} e {MaxLength} caracteres.");

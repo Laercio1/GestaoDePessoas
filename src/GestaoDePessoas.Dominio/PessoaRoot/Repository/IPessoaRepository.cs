@@ -1,5 +1,4 @@
-﻿using GestaoDePessoas.Dominio;
-using GestaoDePessoas.Dominio.Interfaces;
+﻿using GestaoDePessoas.Dominio.Interfaces;
 
 namespace GestaoDePessoas.Dominio.PessoaRoot.Repository
 {
@@ -7,7 +6,7 @@ namespace GestaoDePessoas.Dominio.PessoaRoot.Repository
     {
         Task<Guid> ObterId(string cpf_cnpj);
 
-        Task<Pessoa> EExisteCadastroMesmoCPFCNPJ(Pessoa model);
+        int EExisteCadastroMesmoCPFCNPJ(Pessoa model);
 
         Task<ListaPaginada<Pessoa>> ObterPorTodosFiltros(bool? ativo, int? pagina, int? tamanhoPagina, string filtro);
     }

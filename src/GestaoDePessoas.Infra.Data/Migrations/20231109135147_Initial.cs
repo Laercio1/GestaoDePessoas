@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace GestaoDePessoa.Infra.Data.Migrations
+namespace GestaoDePessoas.Infra.Data.Migrations
 {
     /// <inheritdoc />
     public partial class Initial : Migration
@@ -15,10 +15,10 @@ namespace GestaoDePessoa.Infra.Data.Migrations
                 name: "Pessoa",
                 columns: table => new
                 {
-                    Id = table.Column<string>(type: "char(36)", nullable: false),
+                    Id = table.Column<Guid>(type: "char(36)", nullable: false),
                     data_cadastro = table.Column<DateTime>(type: "datetime", nullable: false),
                     nomecompleto = table.Column<string>(type: "varchar(250)", nullable: false),
-                    cnpj_cpf = table.Column<string>(type: "varchar(18)", nullable: false),
+                    cnpj_cpf = table.Column<string>(type: "varchar(14)", nullable: false),
                     email = table.Column<string>(type: "varchar(150)", nullable: false),
                     telefone = table.Column<string>(type: "varchar(12)", nullable: false),
                     cep = table.Column<string>(type: "varchar(9)", nullable: false),

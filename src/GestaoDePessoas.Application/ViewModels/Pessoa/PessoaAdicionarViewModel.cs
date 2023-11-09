@@ -1,4 +1,4 @@
-﻿namespace GestaoDePessoas.Application.ViewModels.Produto
+﻿namespace GestaoDePessoas.Application.ViewModels.Pessoa
 {
     public class PessoaAdicionarViewModel  
     {
@@ -12,6 +12,5 @@
         public string Bairro { get; set; }
         public string Numero { get; set; }
         public string Logradouro { get; set; }
-        public bool Ativo { get; set; }
     }
 }

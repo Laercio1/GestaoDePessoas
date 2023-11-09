@@ -9,8 +9,11 @@ namespace GestaoDePessoas.API.Configuration
         {
             if (services == null) throw new ArgumentNullException(nameof(services));
 
+            //services.AddDbContext<GestaoDePessoasContext>(options => options
+            //    .UseSqlServer(configuration.GetConnectionString("GestaoDePessoasConnectionString")));
+
             services.AddDbContext<GestaoDePessoasContext>(options => options
-                .UseSqlServer(configuration.GetConnectionString("GestaoDePessoasConnectionString")));
+                .UseSqlite("Data Source=GestaoDePessoas.db"));
         }
     }
 }

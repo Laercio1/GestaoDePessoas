@@ -1,5 +1,4 @@
 ﻿using AutoMapper;
-using GestaoDePessoas.Application.AutoMapper;
 
 namespace GestaoDePessoas.Application.AutoMapper
 {

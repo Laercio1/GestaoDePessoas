@@ -107,8 +107,8 @@ namespace GestaoDePessoas.Application.Services.Base
             if (!ValidarModel(model))
                 return false;
 
-            //if (!ValidarAdicionarModel(model))
-            //    return false;
+            if (!ValidarAdicionarModel(model))
+                return false;
 
             try
             {
