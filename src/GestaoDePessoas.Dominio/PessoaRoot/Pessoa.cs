@@ -14,7 +14,7 @@ namespace GestaoDePessoas.Dominio.PessoaRoot
 
         public string Email { get; set; }
 
-        public string Telefone { get; set; }
+        public string? Telefone { get; set; }
 
         public string CEP { get; set; }
 
@@ -24,7 +24,7 @@ namespace GestaoDePessoas.Dominio.PessoaRoot
 
         public string Bairro { get; set; }
 
-        public string Numero { get; set; }
+        public string? Numero { get; set; }
 
         public string Logradouro { get; set; }
 

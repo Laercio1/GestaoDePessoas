@@ -32,8 +32,7 @@ namespace GestaoDePessoas.Infra.Data.TypeConfiguration
 
             builder.Property(p => p.Telefone)
                 .HasColumnName("telefone")
-                .HasColumnType("varchar(12)")
-                .IsRequired();
+                .HasColumnType("varchar(12)");
 
             builder.Property(p => p.CEP)
                 .HasColumnName("cep")
@@ -57,8 +56,7 @@ namespace GestaoDePessoas.Infra.Data.TypeConfiguration
 
             builder.Property(p => p.Numero)
                .HasColumnName("numero")
-               .HasColumnType("varchar(50)")
-               .IsRequired();
+               .HasColumnType("varchar(50)");
 
             builder.Property(p => p.Logradouro)
                .HasColumnName("logradouro")

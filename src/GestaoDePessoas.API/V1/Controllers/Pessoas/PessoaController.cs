@@ -247,10 +247,14 @@ namespace GestaoDePessoas.API.V1.Controllers.Numeros
 
         private async Task<TViewModel> EValidoPessoaViewModel<TViewModel>(TViewModel viewmodel) where TViewModel : class
         {
-            var cnpj_cpf = StringUtils.ApenasNumeros((string)viewmodel.GetType().GetProperty("CNPJ_CPF").GetValue(viewmodel, null));
+            var cnpjCpfProperty = viewmodel.GetType().GetProperty("CNPJ_CPF");
+            if (cnpjCpfProperty != null)
+            {
+                var cnpjCpf = (string)cnpjCpfProperty.GetValue(viewmodel, null);
 
-            viewmodel.GetType().GetProperty("CNPJ_CPF").SetValue(viewmodel, cnpj_cpf);
-
+                if (!string.IsNullOrEmpty(cnpjCpf))
+                    cnpjCpfProperty.SetValue(viewmodel, StringUtils.ApenasNumeros(cnpjCpf));
+            }
             return viewmodel;
         }
     }

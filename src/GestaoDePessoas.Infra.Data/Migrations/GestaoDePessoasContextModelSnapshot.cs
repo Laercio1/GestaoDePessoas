@@ -73,12 +73,10 @@ namespace GestaoDePessoas.Infra.Data.Migrations
                         .HasColumnName("nomecompleto");
 
                     b.Property<string>("Numero")
-                        .IsRequired()
                         .HasColumnType("varchar(50)")
                         .HasColumnName("numero");
 
                     b.Property<string>("Telefone")
-                        .IsRequired()
                         .HasColumnType("varchar(12)")
                         .HasColumnName("telefone");
 

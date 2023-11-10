@@ -21,7 +21,7 @@ namespace GestaoDePessoas.Dominio.PessoaRoot.Validation
             RuleFor(c => c.Email)
                 .EmailAddress().WithMessage("E-mail inválido.");
 
-            RuleFor(c => StringUtils.ApenasNumeros(c.Telefone))
+            RuleFor(c => c.Telefone)
                 .MaximumLength(12).WithMessage("O campo {PropertyName} deve ter menos de {MaxLength} caracteres.");
 
             RuleFor(c => StringUtils.ApenasNumeros(c.CEP))
@@ -30,22 +30,22 @@ namespace GestaoDePessoas.Dominio.PessoaRoot.Validation
 
             RuleFor(c => c.Estado)
                 .NotEmpty().WithMessage("O campo {PropertyName} é obrigatório.")
-                .Length(3, 50).WithMessage("O campo {PropertyName} precisa ter entre {MinLength} e {MaxLength} caracteres.");
+                .Length(1, 50).WithMessage("O campo {PropertyName} precisa ter entre {MinLength} e {MaxLength} caracteres.");
 
             RuleFor(c => c.Cidade)
                 .NotEmpty().WithMessage("O campo {PropertyName} é obrigatório.")
-                .Length(3, 100).WithMessage("O campo {PropertyName} precisa ter entre {MinLength} e {MaxLength} caracteres.");
+                .Length(1, 100).WithMessage("O campo {PropertyName} precisa ter entre {MinLength} e {MaxLength} caracteres.");
 
             RuleFor(c => c.Bairro)
                 .NotEmpty().WithMessage("O campo {PropertyName} é obrigatório.")
-                .Length(3, 150).WithMessage("O campo {PropertyName} precisa ter entre {MinLength} e {MaxLength} caracteres.");
+                .Length(1, 150).WithMessage("O campo {PropertyName} precisa ter entre {MinLength} e {MaxLength} caracteres.");
 
             RuleFor(c => c.Numero)
                 .MaximumLength(50).WithMessage("O campo {PropertyName} deve ter menos de {MaxLength} caracteres.");
 
             RuleFor(c => c.Logradouro)
                 .NotEmpty().WithMessage("O campo {PropertyName} é obrigatório.")
-                .Length(3, 150).WithMessage("O campo {PropertyName} precisa ter entre {MinLength} e {MaxLength} caracteres.");
+                .Length(1, 150).WithMessage("O campo {PropertyName} precisa ter entre {MinLength} e {MaxLength} caracteres.");
         }
     }
 }

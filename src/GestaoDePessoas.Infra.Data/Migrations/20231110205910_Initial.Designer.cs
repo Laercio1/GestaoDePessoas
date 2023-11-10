@@ -11,7 +11,7 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace GestaoDePessoas.Infra.Data.Migrations
 {
     [DbContext(typeof(GestaoDePessoasContext))]
-    [Migration("20231109141719_Initial")]
+    [Migration("20231110205910_Initial")]
     partial class Initial
     {
         /// <inheritdoc />
@@ -76,12 +76,10 @@ namespace GestaoDePessoas.Infra.Data.Migrations
                         .HasColumnName("nomecompleto");
 
                     b.Property<string>("Numero")
-                        .IsRequired()
                         .HasColumnType("varchar(50)")
                         .HasColumnName("numero");
 
                     b.Property<string>("Telefone")
-                        .IsRequired()
                         .HasColumnType("varchar(12)")
                         .HasColumnName("telefone");
 
