@@ -5,7 +5,7 @@ namespace GestaoDePessoas.Application.ViewModels.Pessoa
     public class PessoaAdicionarViewModel  
     {
         [Required(ErrorMessage = "Nome Completo é requerido")]
-        [StringLength(250, MinimumLength = 5, ErrorMessage = "O campo {0} precisa ter entre {2} e {1} caracteres")]
+        [StringLength(250, MinimumLength = 1, ErrorMessage = "O campo {0} precisa ter entre {2} e {1} caracteres")]
         public string NomeCompleto { get; set; }
 
         [Required(ErrorMessage = "CNPJ/CPF é requerido")]
@@ -19,7 +19,7 @@ namespace GestaoDePessoas.Application.ViewModels.Pessoa
         public string? Telefone { get; set; }
 
         [Required(ErrorMessage = "CEP é requerido")]
-        [StringLength(8, ErrorMessage = "O tamanho do campo {0} deve ser de {1} caracteres.")]
+        [StringLength(9, ErrorMessage = "O tamanho do campo {0} deve ser de {1} caracteres.")]
         public string CEP { get; set; }
 
         [Required(ErrorMessage = "Estado é requerido")]

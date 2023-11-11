@@ -12,7 +12,7 @@ namespace GestaoDePessoas.Dominio.PessoaRoot.Validation
 
             RuleFor(c => c.NomeCompleto)
                 .NotEmpty().WithMessage("O campo {PropertyName} é obrigatório.")
-                .Length(5, 250).WithMessage("O campo {PropertyName} precisa ter entre {MinLength} e {MaxLength} caracteres.");
+                .Length(1, 250).WithMessage("O campo {PropertyName} precisa ter entre {MinLength} e {MaxLength} caracteres.");
 
             RuleFor(c => StringUtils.ApenasNumeros(c.CNPJ_CPF))
                 .NotEmpty().WithMessage("O campo {PropertyName} é obrigatório.")

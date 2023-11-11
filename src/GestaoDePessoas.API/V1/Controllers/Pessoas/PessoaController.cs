@@ -65,26 +65,26 @@ namespace GestaoDePessoas.API.V1.Controllers.Numeros
         ///       "logradouro": "Avenida"
         ///     }
         ///     
-        ///     nomeCompleto -> Deve ter no mínimo 5 e no máximo 250 caracteres (É obrigatório);
+        ///     nomeCompleto -> Deve ter no mínimo 1 e no máximo 250 caracteres (É obrigatório);
         ///     cnpJ_CPF -> Deve ter no mínimo 11 e no máximo 14 caracteres (É obrigatório);
         ///     email -> É obrigatório;
         ///     telefone -> Deve ter no máximo 12 caracteres (É opcional);
         ///     cep -> Deve ter no mínimo 8 e no máximo 9 caracteres (É obrigatório);
-        ///     estado -> Deve ter no mínimo 3 e no máximo 50 caracteres (É obrigatório);
-        ///     cidade -> Deve ter no mínimo 3 e no máximo 100 caracteres (É obrigatório);
-        ///     bairro -> Deve ter no mínimo 3 e no máximo 150 caracteres (É obrigatório);
+        ///     estado -> Deve ter no mínimo 1 e no máximo 50 caracteres (É obrigatório);
+        ///     cidade -> Deve ter no mínimo 1 e no máximo 100 caracteres (É obrigatório);
+        ///     bairro -> Deve ter no mínimo 1 e no máximo 150 caracteres (É obrigatório);
         ///     numero -> Deve ter no máximo 50 caracteres (É opcional);
-        ///     logradouro -> Deve ter no mínimo 3 e no máximo 150 caracteres (É obrigatório);    
+        ///     logradouro -> Deve ter no mínimo 1 e no máximo 150 caracteres (É obrigatório);    
         ///    
         ///     A aplicação impõe uma restrição que permite o cadastro de um número de CPF ou CNPJ uma única vez. 
         ///     Isso garante a unicidade dos registros e impede duplicações no sistema.
         ///     Obs: Certifique-se de inserir um número de CPF ou CNPJ válido e único para cada registro.
         /// </remarks>
-        /// <response code="200">O recurso solicitado foi processado e retornado com sucesso.</response>
+        /// <response code="201">O recurso solicitado foi processado e retornado com sucesso.</response>
         /// <response code="400">Bad Request - Não foi possível interpretar a requisição. Verifique a sintaxe das informações enviadas</response>
         /// 
         [HttpPost]
-        [ProducesResponseType(typeof(PessoaViewModel), 200)]
+        [ProducesResponseType(typeof(PessoaViewModel), 201)]
         [ProducesResponseType(typeof(BadRequestRetorno), 400)]
         public async override Task<IActionResult> Post([FromBody] PessoaAdicionarViewModel viewmodel)
         {
@@ -117,16 +117,16 @@ namespace GestaoDePessoas.API.V1.Controllers.Numeros
         ///     }
         ///     
         ///     id -> É obrigatório;
-        ///     nomeCompleto -> Deve ter no mínimo 5 e no máximo 250 caracteres (É obrigatório);
+        ///     nomeCompleto -> Deve ter no mínimo 1 e no máximo 250 caracteres (É obrigatório);
         ///     cnpJ_CPF -> Deve ter no mínimo 11 e no máximo 14 caracteres (É obrigatório);
         ///     email -> É obrigatório;
         ///     telefone -> Deve ter no máximo 12 caracteres (É opcional);
         ///     cep -> Deve ter no mínimo 8 e no máximo 9 caracteres (É obrigatório);
-        ///     estado -> Deve ter no mínimo 3 e no máximo 50 caracteres (É obrigatório);
-        ///     cidade -> Deve ter no mínimo 3 e no máximo 100 caracteres (É obrigatório);
-        ///     bairro -> Deve ter no mínimo 3 e no máximo 150 caracteres (É obrigatório);
+        ///     estado -> Deve ter no mínimo 1 e no máximo 50 caracteres (É obrigatório);
+        ///     cidade -> Deve ter no mínimo 1 e no máximo 100 caracteres (É obrigatório);
+        ///     bairro -> Deve ter no mínimo 1 e no máximo 150 caracteres (É obrigatório);
         ///     numero -> Deve ter no máximo 50 caracteres (É opcional);
-        ///     logradouro -> Deve ter no mínimo 3 e no máximo 150 caracteres (É obrigatório);
+        ///     logradouro -> Deve ter no mínimo 1 e no máximo 150 caracteres (É obrigatório);
         ///
         ///     Obs: O valor do campo "id" deve coincidir com o valor fornecido na consulta.
         /// </remarks>
