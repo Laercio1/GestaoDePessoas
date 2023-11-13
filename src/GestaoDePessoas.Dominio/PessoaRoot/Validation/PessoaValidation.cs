@@ -15,7 +15,7 @@ namespace GestaoDePessoas.Dominio.PessoaRoot.Validation
 
             RuleFor(c => c.CNPJ_CPF)
                 .NotEmpty().WithMessage("O campo {PropertyName} é obrigatório.")
-                .Length(11, 14).WithMessage("O campo {PropertyName} precisa ter entre {MinLength} e {MaxLength} caracteres.");
+                .Length(11, 18).WithMessage("O campo {PropertyName} precisa ter entre {MinLength} e {MaxLength} caracteres.");
 
             RuleFor(c => c.Email)
                 .EmailAddress().WithMessage("E-mail inválido.");

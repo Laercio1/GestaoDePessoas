@@ -35,14 +35,9 @@ namespace GestaoDePessoas.Application.Services.Pessoas
 
         public override bool ValidarAdicionarModel(Pessoa model)
         {
-            if (model.CNPJ_CPF.Length == 11 && !StringUtils.ValidaCPF(model.CNPJ_CPF))
+            if (!StringUtils.ValidaCNPJouCPF(model.CNPJ_CPF))
             {
-                Notificar("O CPF da {0} informado é inválido.", _NomeDominio);
-                return false;
-            }
-            else if (model.CNPJ_CPF.Length == 14 && !StringUtils.ValidaCNPJ(model.CNPJ_CPF))
-            {
-                Notificar("O CNPJ da {0} informado é inválido.", _NomeDominio);
+                Notificar("O CNPJ/CPF da {0} informado é inválido.", _NomeDominio);
                 return false;
             }
             else if (_repository.EExisteCadastroMesmoCPFCNPJ(model) > 0)
