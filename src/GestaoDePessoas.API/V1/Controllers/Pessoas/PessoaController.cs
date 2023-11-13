@@ -46,8 +46,8 @@ namespace GestaoDePessoas.API.V1.Controllers.Pessoas
         /// <summary>
         /// Cadastra nova Pessoa
         /// </summary>
-        /// <param name="viewmodel">Dto para o post</param>
-        /// <returns></returns>
+        /// <param name="viewmodel">View Model de Pessoa.</param>
+        /// <returns>Resultado da operação.</returns>
         /// /// <remarks>
         /// Exemplo de requisição
         ///
@@ -58,7 +58,7 @@ namespace GestaoDePessoas.API.V1.Controllers.Pessoas
         ///       "email": "gestaodepessoas@gmail.com",
         ///       "telefone": "6399999-5555",
         ///       "cep": "77800-000",
-        ///       "estado": "Tocantins",
+        ///       "estado": "TO",
         ///       "cidade": "Araguaína",
         ///       "bairro": "Centro",
         ///       "numero": "1234",
@@ -96,7 +96,7 @@ namespace GestaoDePessoas.API.V1.Controllers.Pessoas
         /// <summary>
         /// Atualiza o registro de Pessoa 
         /// </summary>
-        /// <param name="viewmodel">Dto para o put</param>
+        /// <param name="viewmodel">View Model representando a Pessoa.</param>
         /// <returns></returns>
         /// /// <remarks>
         /// Exemplo de requisição
@@ -108,7 +108,7 @@ namespace GestaoDePessoas.API.V1.Controllers.Pessoas
         ///       "email": "gestaodepessoas@gmail.com",
         ///       "telefone": "6399999-5555",
         ///       "cep": "77800-000",
-        ///       "estado": "Tocantins",
+        ///       "estado": "TO",
         ///       "cidade": "Araguaína",
         ///       "bairro": "Centro",
         ///       "numero": "1234",
