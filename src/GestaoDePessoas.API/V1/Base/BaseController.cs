@@ -3,7 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.ModelBinding;
 using GestaoDePessoas.Application.Notificacoes;
 
-namespace GestaoDePessoas.API.V1.Controllers.Numeros
+namespace GestaoDePessoas.API.V1.Base
 {
 
     [Produces("application/json")]

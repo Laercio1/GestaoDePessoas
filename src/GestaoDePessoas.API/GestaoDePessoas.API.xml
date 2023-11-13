@@ -4,7 +4,7 @@
         <name>GestaoDePessoas.API</name>
     </assembly>
     <members>
-        <member name="M:GestaoDePessoas.API.V1.Controllers.Numeros.PessoaController.Post(GestaoDePessoas.Application.ViewModels.Pessoa.PessoaAdicionarViewModel)">
+        <member name="M:GestaoDePessoas.API.V1.Controllers.Pessoas.PessoaController.Post(GestaoDePessoas.Application.ViewModels.Pessoa.PessoaAdicionarViewModel)">
              <summary>
              Cadastra nova Pessoa
              </summary>
@@ -46,7 +46,7 @@
              <response code="400">Bad Request - Não foi possível interpretar a requisição. Verifique a sintaxe das informações enviadas</response>
              
         </member>
-        <member name="M:GestaoDePessoas.API.V1.Controllers.Numeros.PessoaController.Put(System.Guid,GestaoDePessoas.Application.ViewModels.Pessoa.PessoaAtualizarViewModel)">
+        <member name="M:GestaoDePessoas.API.V1.Controllers.Pessoas.PessoaController.Put(System.Guid,GestaoDePessoas.Application.ViewModels.Pessoa.PessoaAtualizarViewModel)">
              <summary>
              Atualiza o registro de Pessoa 
              </summary>
@@ -88,7 +88,7 @@
              <response code="400">Bad Request - Não foi possível interpretar a requisição. Verifique a sintaxe das informações enviadas</response>
              
         </member>
-        <member name="M:GestaoDePessoas.API.V1.Controllers.Numeros.PessoaController.Delete(System.Guid)">
+        <member name="M:GestaoDePessoas.API.V1.Controllers.Pessoas.PessoaController.Delete(System.Guid)">
              <summary>
              Remove o registro de Pessoa
              </summary>
@@ -107,7 +107,7 @@
              <response code="400">Bad Request - Não foi possível interpretar a requisição. Verifique a sintaxe das informações enviadas</response>
             
         </member>
-        <member name="M:GestaoDePessoas.API.V1.Controllers.Numeros.PessoaController.Get(System.Guid)">
+        <member name="M:GestaoDePessoas.API.V1.Controllers.Pessoas.PessoaController.Get(System.Guid)">
              <summary>
              Retorna registro de Pessoa por Id (guid)
              </summary>
@@ -126,7 +126,7 @@
              <response code="400">Bad Request - Não foi possível interpretar a requisição. Verifique a sintaxe das informações enviadas</response>
             
         </member>
-        <member name="M:GestaoDePessoas.API.V1.Controllers.Numeros.PessoaController.GetPorTodosOsFiltros(System.Nullable{System.Boolean},System.Nullable{System.Int32},System.Nullable{System.Int32},System.String)">
+        <member name="M:GestaoDePessoas.API.V1.Controllers.Pessoas.PessoaController.GetPorTodosOsFiltros(System.Nullable{System.Boolean},System.Nullable{System.Int32},System.Nullable{System.Int32},System.String)">
              <summary>
              Retorna lista paginada de Pessoas
              </summary>

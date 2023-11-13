@@ -6,7 +6,6 @@ using Microsoft.AspNetCore.Mvc;
 using GestaoDePessoas.Application.Notificacoes;
 using GestaoDePessoas.Dominio.Core.Models;
 using GestaoDePessoas.Dominio.Interfaces;
-using GestaoDePessoas.API.V1.Controllers.Numeros;
 
 namespace GestaoDePessoas.API.V1.Base
 {

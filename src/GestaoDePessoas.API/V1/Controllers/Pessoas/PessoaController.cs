@@ -10,7 +10,7 @@ using GestaoDePessoas.Dominio.PessoaRoot.Validation;
 using GestaoDePessoas.Dominio.Core.Utils.StringUtils;
 using GestaoDePessoas.Application.Interfaces.Pessoas;
 
-namespace GestaoDePessoas.API.V1.Controllers.Numeros
+namespace GestaoDePessoas.API.V1.Controllers.Pessoas
 {
     [ApiVersion("1.0")]
     [Route("api/v{version:apiVersion}/pessoa")]
