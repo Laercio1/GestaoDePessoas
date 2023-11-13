@@ -10,7 +10,7 @@ namespace GestaoDePessoas.Application.ViewModels.Pessoa
         public string NomeCompleto { get; set; }
 
         [Required(ErrorMessage = "CNPJ/CPF é requerido")]
-        [StringLength(14, MinimumLength = 11, ErrorMessage = "O campo {0} precisa ter entre {2} e {1} caracteres")]
+        [StringLength(18, MinimumLength = 11, ErrorMessage = "O campo {0} precisa ter entre {2} e {1} caracteres")]
         public string CNPJ_CPF { get; set; }
 
         [Required(ErrorMessage = "Email é requerido")]
@@ -20,7 +20,7 @@ namespace GestaoDePessoas.Application.ViewModels.Pessoa
         public string? Telefone { get; set; }
 
         [Required(ErrorMessage = "CEP é requerido")]
-        [StringLength(9, ErrorMessage = "O tamanho do campo {0} deve ser de {1} caracteres.")]
+        [StringLength(9, MinimumLength = 8, ErrorMessage = "O campo {0} precisa ter entre {2} e {1} caracteres")]
         public string CEP { get; set; }
 
         [Required(ErrorMessage = "Estado é requerido")]

@@ -66,7 +66,7 @@ namespace GestaoDePessoas.API.V1.Controllers.Numeros
         ///     }
         ///     
         ///     nomeCompleto -> Deve ter no mínimo 1 e no máximo 250 caracteres (É obrigatório);
-        ///     cnpJ_CPF -> Deve ter no mínimo 11 e no máximo 14 caracteres (É obrigatório);
+        ///     cnpJ_CPF -> Deve ter no mínimo 11 e no máximo 18 caracteres (É obrigatório);
         ///     email -> É obrigatório;
         ///     telefone -> Deve ter no máximo 12 caracteres (É opcional);
         ///     cep -> Deve ter no mínimo 8 e no máximo 9 caracteres (É obrigatório);
@@ -118,7 +118,7 @@ namespace GestaoDePessoas.API.V1.Controllers.Numeros
         ///     
         ///     id -> É obrigatório;
         ///     nomeCompleto -> Deve ter no mínimo 1 e no máximo 250 caracteres (É obrigatório);
-        ///     cnpJ_CPF -> Deve ter no mínimo 11 e no máximo 14 caracteres (É obrigatório);
+        ///     cnpJ_CPF -> Deve ter no mínimo 11 e no máximo 18 caracteres (É obrigatório);
         ///     email -> É obrigatório;
         ///     telefone -> Deve ter no máximo 12 caracteres (É opcional);
         ///     cep -> Deve ter no mínimo 8 e no máximo 9 caracteres (É obrigatório);

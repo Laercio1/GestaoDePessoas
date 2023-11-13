@@ -1,5 +1,4 @@
 ﻿using FluentValidation;
-using GestaoDePessoas.Dominio.Core.Utils.StringUtils;
 
 namespace GestaoDePessoas.Dominio.PessoaRoot.Validation
 {
@@ -14,7 +13,7 @@ namespace GestaoDePessoas.Dominio.PessoaRoot.Validation
                 .NotEmpty().WithMessage("O campo {PropertyName} é obrigatório.")
                 .Length(1, 250).WithMessage("O campo {PropertyName} precisa ter entre {MinLength} e {MaxLength} caracteres.");
 
-            RuleFor(c => StringUtils.ApenasNumeros(c.CNPJ_CPF))
+            RuleFor(c => c.CNPJ_CPF)
                 .NotEmpty().WithMessage("O campo {PropertyName} é obrigatório.")
                 .Length(11, 14).WithMessage("O campo {PropertyName} precisa ter entre {MinLength} e {MaxLength} caracteres.");
 
@@ -24,9 +23,9 @@ namespace GestaoDePessoas.Dominio.PessoaRoot.Validation
             RuleFor(c => c.Telefone)
                 .MaximumLength(12).WithMessage("O campo {PropertyName} deve ter menos de {MaxLength} caracteres.");
 
-            RuleFor(c => StringUtils.ApenasNumeros(c.CEP))
+            RuleFor(c => c.CEP)
                 .NotEmpty().WithMessage("O campo {PropertyName} é obrigatório.")
-                .Length(8).WithMessage("O campo {PropertyName} deve ter {ExactLength} caractere(s).");
+                .Length(8, 9).WithMessage("O campo {PropertyName} precisa ter entre {MinLength} e {MaxLength} caracteres.");
 
             RuleFor(c => c.Estado)
                 .NotEmpty().WithMessage("O campo {PropertyName} é obrigatório.")
