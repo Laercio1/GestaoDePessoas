@@ -31,7 +31,8 @@ namespace GestaoDePessoas.Infra.Data.Repository
             var _consulta = ReturnIQueryable();
 
             var consulta = _consulta.Where(c => EF.Functions.Like(c.CNPJ_CPF, model.CNPJ_CPF.ToScape()) ||
-                EF.Functions.Like(c.CNPJ_CPF.Replace(".", "").Replace("-", "").Replace("/", ""), model.CNPJ_CPF.ToScape())).ToList();
+                EF.Functions.Like(c.CNPJ_CPF.Replace(".", "").Replace("-", "").Replace("/", ""), 
+                model.CNPJ_CPF.Replace(".", "").Replace("-", "").Replace("/", "").ToScape())).ToList();
 
             return consulta.Count;
         }
