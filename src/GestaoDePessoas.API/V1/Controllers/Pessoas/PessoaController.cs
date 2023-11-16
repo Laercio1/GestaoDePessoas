@@ -44,7 +44,7 @@ namespace GestaoDePessoas.API.V1.Controllers.Pessoas
 
 
         /// <summary>
-        /// Cadastra nova Pessoa
+        /// Cadastra nova Pessoa.
         /// </summary>
         /// <param name="viewmodel">View Model de Pessoa.</param>
         /// <returns>Resultado da operação.</returns>
@@ -80,8 +80,8 @@ namespace GestaoDePessoas.API.V1.Controllers.Pessoas
         ///     Isso garante a unicidade dos registros e impede duplicações no sistema.
         ///     Obs: Certifique-se de inserir um número de CPF ou CNPJ válido e único para cada registro.
         /// </remarks>
-        /// <response code="201">O recurso solicitado foi processado e retornado com sucesso.</response>
-        /// <response code="400">Bad Request - Não foi possível interpretar a requisição. Verifique a sintaxe das informações enviadas</response>
+        /// <response code="201">Novo registro de Pessoa criado.</response>
+        /// <response code="400">Não foi possível criar o registro de Pessoa.</response>
         /// 
         [HttpPost]
         [ProducesResponseType(typeof(PessoaViewModel), 201)]
@@ -94,15 +94,17 @@ namespace GestaoDePessoas.API.V1.Controllers.Pessoas
         }
 
         /// <summary>
-        /// Atualiza o registro de Pessoa 
+        /// Atualiza registro Pessoa. 
         /// </summary>
-        /// <param name="viewmodel">View Model representando a Pessoa.</param>
+        /// <param name="id">Id do registro.</param>
+        /// <param name="viewmodel">View Model de Pessoa.</param>
         /// <returns></returns>
         /// /// <remarks>
         /// Exemplo de requisição
         ///
         ///     PUT /api/v1/pessoa/00000000-0000-0000-0000-000000000000
         ///     {
+        ///       "id" : "00000000-0000-0000-0000-000000000000",
         ///       "nomeCompleto": "Nome da pessoa",
         ///       "cnpJ_CPF": "00.000.000/0001-19",
         ///       "email": "gestaodepessoas@gmail.com",
@@ -130,8 +132,8 @@ namespace GestaoDePessoas.API.V1.Controllers.Pessoas
         ///
         ///     Obs: O valor do campo "id" deve coincidir com o valor fornecido na consulta.
         /// </remarks>
-        /// <response code="200">O recurso solicitado foi processado e retornado com sucesso.</response>
-        /// <response code="400">Bad Request - Não foi possível interpretar a requisição. Verifique a sintaxe das informações enviadas</response>
+        /// <response code="200">Registro de Pessoa atualizado.</response>
+        /// <response code="400">Não foi possível atualizar o registro de Pessoa.</response>
         /// 
         [HttpPut("{id:guid}")]
         [ProducesResponseType(typeof(PessoaViewModel), 200)]
@@ -144,44 +146,35 @@ namespace GestaoDePessoas.API.V1.Controllers.Pessoas
         }
 
         /// <summary>
-        /// Remove o registro de Pessoa
+        /// Exclui registro de Pessoa.
         /// </summary>
+        /// <param name="id">Identificador (guid) do registro de Pessoa.</param>
         /// <returns></returns>
         /// /// <remarks>
         /// Exemplo de requisição
         ///
-        ///     DEL /api/v1/pessoa/00000000-0000-0000-0000-000000000000
+        ///     DELETE /api/v1/pessoa/00000000-0000-0000-0000-000000000000
         ///     {
         ///     }
-        ///     
-        ///     id -> É obrigatório;
         ///
         /// </remarks>
-        /// <response code="200">O recurso solicitado foi processado e retornado com sucesso.</response>
-        /// <response code="400">Bad Request - Não foi possível interpretar a requisição. Verifique a sintaxe das informações enviadas</response>
+        /// <response code="200">Registro excluído com sucesso.</response>
+        /// <response code="400">Não foi possível excluir o registro.</response>
         ///
         [HttpDelete("{id:guid}")]
+        [ProducesResponseType(typeof(BadRequestRetorno), 400)]
         public async override Task<IActionResult> Delete(Guid id)
         {
             return await base.Delete(id);
         }
 
         /// <summary>
-        /// Retorna registro de Pessoa por Id (guid)
+        /// Retorna Pessoa especifico por Id (guid).
         /// </summary>
+        /// <param name="id">Identificador (guid) do registro de Pessoa.</param>
         /// <returns></returns>
-        /// /// <remarks>
-        /// Exemplo de requisição
-        ///
-        ///     GET /api/v1/pessoa/00000000-0000-0000-0000-000000000000
-        ///     {
-        ///     }
-        ///     
-        ///     id -> É obrigatório;
-        ///
-        /// </remarks>
-        /// <response code="200">O recurso solicitado foi processado e retornado com sucesso.</response>
-        /// <response code="400">Bad Request - Não foi possível interpretar a requisição. Verifique a sintaxe das informações enviadas</response>
+        /// <response code="200">Registro de Pessoa correspondente ao Id.</response>
+        /// <response code="400">Não foi possível localizar o registro de Pessoa.</response>
         ///
         [HttpGet("{id:guid}")]
         [ProducesResponseType(typeof(PessoaViewModel), 200)]
@@ -192,42 +185,17 @@ namespace GestaoDePessoas.API.V1.Controllers.Pessoas
         }
 
         /// <summary>
-        /// Retorna lista paginada de Pessoas
+        /// Retorna lista paginada de Pessoas.
         /// </summary>
         /// <returns></returns>
-        /// /// <remarks>
-        /// Exemplo de requisição
-        ///
-        ///     GET /api/v1/pessoa
-        ///     {
-        ///     }    
-        ///     
-        ///     ativo -> É opcional;
-        ///     pagina -> Deve ser informado apenas valor númerico (É opcional);
-        ///     tamanhoPagina -> Deve ser informado apenas valor númerico (É opcional);
-        ///     filtro -> É opcional;
-        ///
-        ///     Filtro de Consulta:
-        ///     Realize consultas precisas de registros de pessoas por meio de diversos campos. 
-        ///     Utilize o Nome Completo, CPF/CNPJ, Logradouro e Bairro para refinar sua busca e obter informações específicas.
-        ///
-        ///     Exemplos de uso:
-        ///     - Consultar por Nome Completo: "João Vicente"
-        ///     - Consultar por CPF/CNPJ: "474.978.470-23" ou "02.514.450/0001-28"
-        ///     - Consultar por Logradouro: "Rua Principal"
-        ///     - Consultar por Bairro: "Centro"
-        /// 
-        /// </remarks>
         /// <param name="ativo">Status do registro Ativo ou Desativado.</param>
         /// <param name="pagina">Página da lista de item.</param>
         /// <param name="tamanhoPagina">Total de itens por página.</param>
-        /// <param name="filtro">Filtro de acordo com os campos disponíveis.</param>
+        /// <param name="filtro">Campos para filtro: Nome Completo, CPF/CNPJ, Logradouro, Bairro.</param>
         /// <response code="200">O recurso solicitado foi processado e retornado com sucesso.</response>
-        /// <response code="400">Bad Request - Não foi possível interpretar a requisição. Verifique a sintaxe das informações enviadas</response>
         ///
         [HttpGet]
         [ProducesResponseType(typeof(SucessRetorno<ListaPaginada<PessoaViewModel>>), 200)]
-        [ProducesResponseType(typeof(BadRequestRetorno), 400)]
         public async Task<IActionResult> GetPorTodosOsFiltros([FromQuery] bool? ativo,
             [FromQuery] int? pagina,
             [FromQuery] int? tamanhoPagina,
