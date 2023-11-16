@@ -7,7 +7,6 @@ using GestaoDePessoas.Application.Notificacoes;
 using GestaoDePessoas.Dominio.PessoaRoot;
 using GestaoDePessoas.Dominio.PessoaRoot.Repository;
 using GestaoDePessoas.Dominio.PessoaRoot.Validation;
-using GestaoDePessoas.Dominio.Core.Utils.StringUtils;
 using GestaoDePessoas.Application.Interfaces.Pessoas;
 
 namespace GestaoDePessoas.API.V1.Controllers.Pessoas
@@ -88,8 +87,6 @@ namespace GestaoDePessoas.API.V1.Controllers.Pessoas
         [ProducesResponseType(typeof(BadRequestRetorno), 400)]
         public async override Task<IActionResult> Post([FromBody] PessoaAdicionarViewModel viewmodel)
         {
-            viewmodel = await EValidoPessoaViewModel(viewmodel);
-
             return await base.Post(viewmodel);
         }
 
@@ -140,8 +137,6 @@ namespace GestaoDePessoas.API.V1.Controllers.Pessoas
         [ProducesResponseType(typeof(BadRequestRetorno), 400)]
         public async override Task<IActionResult> Put(Guid id, [FromBody] PessoaAtualizarViewModel viewmodel)
         {
-            viewmodel = await EValidoPessoaViewModel(viewmodel);
-
             return await base.Put(id, viewmodel);
         }
 
@@ -188,20 +183,28 @@ namespace GestaoDePessoas.API.V1.Controllers.Pessoas
         /// Retorna lista paginada de Pessoas.
         /// </summary>
         /// <returns></returns>
+        /// <param name="nomeCompleto">Nome Completo.</param>
+        /// <param name="cnpJ_CPF">CPF ou CNPJ.</param>
+        /// <param name="logradouro">Logradouro.</param>
+        /// <param name="bairro">Bairro.</param>
         /// <param name="ativo">Status do registro Ativo ou Desativado.</param>
         /// <param name="pagina">Página da lista de item.</param>
         /// <param name="tamanhoPagina">Total de itens por página.</param>
-        /// <param name="filtro">Campos para filtro: Nome Completo, CPF/CNPJ, Logradouro, Bairro.</param>
+        /// <param name="ordem">Ordenação: Id, NomeCompleto, CNPJ_CPF, Logradouro, Bairro, DataCadastro.</param>
         /// <response code="200">O recurso solicitado foi processado e retornado com sucesso.</response>
         ///
         [HttpGet]
         [ProducesResponseType(typeof(SucessRetorno<ListaPaginada<PessoaViewModel>>), 200)]
-        public async Task<IActionResult> GetPorTodosOsFiltros([FromQuery] bool? ativo,
+        public async Task<IActionResult> GetPorTodosOsFiltros([FromQuery] string nomeCompleto, [FromQuery] string cnpJ_CPF,
+            [FromQuery] string logradouro,
+            [FromQuery] string bairro,
+            [FromQuery] bool? ativo,
             [FromQuery] int? pagina,
             [FromQuery] int? tamanhoPagina,
-            [FromQuery] string filtro)
+            [FromQuery] string ordem)
         {
-            var models = await _repository.ObterPorTodosFiltros(ativo, pagina, tamanhoPagina, filtro);
+            var models = await _repository.ObterPorTodosFiltros(nomeCompleto, cnpJ_CPF, logradouro, bairro,
+                ativo, pagina, tamanhoPagina, ordem);
 
             ListaPaginada<PessoaViewModel> retorno = new ListaPaginada<PessoaViewModel>(
                 _mapper.Map<List<PessoaViewModel>>(models.ListaRetorno),
@@ -211,19 +214,6 @@ namespace GestaoDePessoas.API.V1.Controllers.Pessoas
                 models.TotalItens);
 
             return CustomResponse(retorno);
-        }
-
-        private async Task<TViewModel> EValidoPessoaViewModel<TViewModel>(TViewModel viewmodel) where TViewModel : class
-        {
-            var cnpjCpfProperty = viewmodel.GetType().GetProperty("CNPJ_CPF");
-            if (cnpjCpfProperty != null)
-            {
-                var cnpjCpf = (string)cnpjCpfProperty.GetValue(viewmodel, null);
-
-                if (!string.IsNullOrEmpty(cnpjCpf))
-                    cnpjCpfProperty.SetValue(viewmodel, StringUtils.ApenasNumeros(cnpjCpf));
-            }
-            return viewmodel;
         }
     }
 }

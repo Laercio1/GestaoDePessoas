@@ -8,6 +8,13 @@ namespace GestaoDePessoas.Dominio.PessoaRoot.Repository
 
         int EExisteCadastroMesmoCPFCNPJ(Pessoa model);
 
-        Task<ListaPaginada<Pessoa>> ObterPorTodosFiltros(bool? ativo, int? pagina, int? tamanhoPagina, string filtro);
+        Task<ListaPaginada<Pessoa>> ObterPorTodosFiltros(string nomeCompleto, 
+            string cnpJ_CPF, 
+            string logradouro,
+            string bairro, 
+            bool? ativo, 
+            int? pagina, 
+            int? tamanhoPagina, 
+            string order);
     }
 }

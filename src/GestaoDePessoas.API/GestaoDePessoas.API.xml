@@ -118,15 +118,19 @@
              <response code="400">Não foi possível localizar o registro de Pessoa.</response>
             
         </member>
-        <member name="M:GestaoDePessoas.API.V1.Controllers.Pessoas.PessoaController.GetPorTodosOsFiltros(System.Nullable{System.Boolean},System.Nullable{System.Int32},System.Nullable{System.Int32},System.String)">
+        <member name="M:GestaoDePessoas.API.V1.Controllers.Pessoas.PessoaController.GetPorTodosOsFiltros(System.String,System.String,System.String,System.String,System.Nullable{System.Boolean},System.Nullable{System.Int32},System.Nullable{System.Int32},System.String)">
              <summary>
              Retorna lista paginada de Pessoas.
              </summary>
              <returns></returns>
+             <param name="nomeCompleto">Nome Completo.</param>
+             <param name="cnpJ_CPF">CPF ou CNPJ.</param>
+             <param name="logradouro">Logradouro.</param>
+             <param name="bairro">Bairro.</param>
              <param name="ativo">Status do registro Ativo ou Desativado.</param>
              <param name="pagina">Página da lista de item.</param>
              <param name="tamanhoPagina">Total de itens por página.</param>
-             <param name="filtro">Campos para filtro: Nome Completo, CPF/CNPJ, Logradouro, Bairro.</param>
+             <param name="ordem">Ordenação: Id, NomeCompleto, CNPJ_CPF, Logradouro, Bairro, DataCadastro.</param>
              <response code="200">O recurso solicitado foi processado e retornado com sucesso.</response>
             
         </member>
