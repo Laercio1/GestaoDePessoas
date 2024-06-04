@@ -26,18 +26,12 @@ namespace GestaoDePessoas.Infra.Data.Pagination
 
         public bool HasPreviousPage
         {
-            get
-            {
-                return (PageIndex > 1);
-            }
+            get { return (PageIndex > 1); }
         }
 
         public bool HasNextPage
         {
-            get
-            {
-                return (PageIndex < TotalPages);
-            }
+            get { return (PageIndex < TotalPages); }
         }
 
         public static async Task<PaginatedList<T>> CreateAsync(IQueryable<T> source, int pageIndex, int pageSize)

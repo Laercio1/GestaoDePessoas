@@ -1,6 +1,6 @@
-﻿using GestaoDePessoas.Dominio.Core.Messages;
+﻿using MediatR;
 using FluentValidation.Results;
-using MediatR;
+using GestaoDePessoas.Dominio.Core.Messages;
 
 namespace GestaoDePessoas.Dominio.Core.Mediator
 {

@@ -1,5 +1,5 @@
-﻿using GestaoDePessoas.API.Middlewares;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
+using GestaoDePessoas.API.Middlewares;
 
 namespace GestaoDePessoas.Services.API.Configurations
 {

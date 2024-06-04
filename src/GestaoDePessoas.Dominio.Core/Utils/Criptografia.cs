@@ -1,5 +1,5 @@
-﻿using System.Security.Cryptography;
-using System.Text;
+﻿using System.Text;
+using System.Security.Cryptography;
 
 namespace GestaoDePessoas.Dominio.Core.Utils
 {

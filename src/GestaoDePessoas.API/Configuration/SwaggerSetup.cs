@@ -1,6 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc.ApiExplorer;
+﻿using Microsoft.OpenApi.Models;
+using Microsoft.AspNetCore.Mvc.ApiExplorer;
 using Microsoft.Extensions.PlatformAbstractions;
-using Microsoft.OpenApi.Models;
 
 namespace GestaoDePessoas.Services.API.Configurations
 {
@@ -15,8 +15,8 @@ namespace GestaoDePessoas.Services.API.Configurations
                 s.SwaggerDoc("v1", new OpenApiInfo
                 {
                     Version = "v1",
-                    Title = "Gestão de Pessoas API",
-                    Description = "Documentação da API do Sistema de Gestão de Pessoas",
+                    Title = ".NET Core Study API",
+                    Description = "Documentação da API de estudos .NET Core",
                     Contact = new OpenApiContact
                     {
                         Name = "Dev. Laércio Fernandes",
@@ -55,7 +55,7 @@ namespace GestaoDePessoas.Services.API.Configurations
 
                 string caminhoAplicacao = PlatformServices.Default.Application.ApplicationBasePath;
                 string nomeAplicacao = PlatformServices.Default.Application.ApplicationName;
-                string caminhoXmlDoc = System.IO.Path.Combine(caminhoAplicacao, $"{nomeAplicacao}.xml");
+                string caminhoXmlDoc = Path.Combine(caminhoAplicacao, $"{nomeAplicacao}.xml");
 
                 s.IncludeXmlComments(caminhoXmlDoc);
             });

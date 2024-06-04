@@ -1,7 +1,7 @@
 ﻿using FluentValidation;
 using FluentValidation.Results;
-using GestaoDePessoas.Application.Notificacoes;
 using GestaoDePessoas.Dominio.Core.Models;
+using GestaoDePessoas.Application.Notificacoes;
 
 namespace GestaoDePessoas.Application.Services.Base
 {

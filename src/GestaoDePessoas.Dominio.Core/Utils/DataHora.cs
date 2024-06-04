@@ -1,25 +1,10 @@
-﻿using System.Globalization;
-using TimeZoneConverter;
+﻿using TimeZoneConverter;
+using System.Globalization;
 
 namespace GestaoDePessoas.Dominio.Core.Utils
 {
     public static class DataHora
     {
-        public static TimeZoneInfo RetornarTimeZoneInfo(string zone = "E. South America Standard Time")
-        {
-            TimeZoneInfo timezone;
-            try
-            {
-                timezone = TimeZoneInfo.FindSystemTimeZoneById(zone);
-            }
-            catch
-            {
-                timezone = TimeZoneInfo.FindSystemTimeZoneById(TZConvert.WindowsToIana(zone));
-            }
-
-            return timezone;
-        }
-
         public static DateTimeOffset ReturnTimeOnServer(string clientString)
         {
             string format = @"dd/MM/yyyy H:m:s zzz";
@@ -32,10 +17,16 @@ namespace GestaoDePessoas.Dominio.Core.Utils
                 DateTimeOffset serverTime = clientTime.ToOffset(serverOffset);
                 return serverTime;
             }
-            catch (FormatException)
-            {
-                return DateTimeOffset.MinValue;
-            }
+            catch (FormatException) { return DateTimeOffset.MinValue; }
+        }
+        public static TimeZoneInfo RetornarTimeZoneInfo(string zone = "E. South America Standard Time")
+        {
+            TimeZoneInfo timezone;
+
+            try { timezone = TimeZoneInfo.FindSystemTimeZoneById(zone); }
+            catch { timezone = TimeZoneInfo.FindSystemTimeZoneById(TZConvert.WindowsToIana(zone)); }
+
+            return timezone;
         }
     }
 }

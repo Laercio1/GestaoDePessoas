@@ -4,19 +4,19 @@
     {
         protected Entity()
         {
-            Id = Guid.NewGuid();
+            ID = Guid.NewGuid();
         }
 
-        public virtual Guid Id { get; set; }
+        public virtual Guid ID { get; set; }
 
         public override int GetHashCode()
         {
-            return (GetType().GetHashCode() * 907) + Id.GetHashCode();
+            return (GetType().GetHashCode() * 907) + ID.GetHashCode();
         }
 
         public override string ToString()
         {
-            return GetType().Name + "[Id = " + Id + "]";
+            return GetType().Name + "[ID = " + ID + "]";
         }
     }
 }

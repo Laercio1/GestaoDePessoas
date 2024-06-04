@@ -1,5 +1,5 @@
-﻿using GestaoDePessoas.Application.ViewModels.Base;
-using GestaoDePessoas.Dominio.Core.Models;
+﻿using GestaoDePessoas.Dominio.Core.Models;
+using GestaoDePessoas.Application.ViewModels.Base;
 
 namespace GestaoDePessoas.Application.Interfaces.Base
 {

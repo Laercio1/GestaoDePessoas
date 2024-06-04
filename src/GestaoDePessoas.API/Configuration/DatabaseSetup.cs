@@ -1,5 +1,5 @@
-﻿using GestaoDePessoas.Infra.Data.Context;
-using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.EntityFrameworkCore;
+using GestaoDePessoas.Infra.Data.Context;
 
 namespace GestaoDePessoas.API.Configuration
 {
@@ -12,8 +12,11 @@ namespace GestaoDePessoas.API.Configuration
             //services.AddDbContext<GestaoDePessoasContext>(options => options
             //    .UseSqlServer(configuration.GetConnectionString("GestaoDePessoasConnectionString")));
 
-            services.AddDbContext<GestaoDePessoasContext>(options => options
-                .UseSqlite("Data Source=GestaoDePessoas.db"));
+            //services.AddDbContext<GestaoDePessoasContext>(options => options
+            //    .UseSqlite("Data Source=GestaoDePessoas.db"));
+
+            services.AddDbContextPool<GestaoDePessoasContext>(options => options
+                .UseMySql(configuration.GetConnectionString("GestaoDePessoasConnectionString"), ServerVersion.AutoDetect(configuration.GetConnectionString("GestaoDePessoasConnectionString"))));
         }
     }
 }

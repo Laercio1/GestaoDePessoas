@@ -1,5 +1,5 @@
-﻿using FluentValidation.Results;
-using MediatR;
+﻿using MediatR;
+using FluentValidation.Results;
 
 namespace GestaoDePessoas.Dominio.Core.Messages
 {

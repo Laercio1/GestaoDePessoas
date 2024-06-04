@@ -125,13 +125,13 @@ namespace GestaoDePessoas.Application.Services.Base
 
         public virtual async Task<bool> Atualizar(TViewModelAtualizar viewmodel)
         {
-            if (!_repository.DominioExiste(viewmodel.Id))
+            if (!_repository.DominioExiste(viewmodel.ID))
             {
                 Notificar("{0} não existe.", _NomeDominio);
                 return false;
             }
 
-            TModel model = await _repository.ObterPorId(viewmodel.Id);
+            TModel model = await _repository.ObterPorId(viewmodel.ID);
 
             bool temAtualizacao = MapearAtualizacoes(model, viewmodel);
 

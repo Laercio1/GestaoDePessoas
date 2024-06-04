@@ -2,6 +2,6 @@
 {
     public abstract class BaseViewModelCadastro
     {
-        public virtual Guid Id { get; set; }
+        public virtual Guid ID { get; set; }
     }
 }

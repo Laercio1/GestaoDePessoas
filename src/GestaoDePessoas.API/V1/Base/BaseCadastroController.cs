@@ -1,11 +1,11 @@
 ﻿using AutoMapper;
 using FluentValidation;
-using GestaoDePessoas.Application.Services.Base.Interfaces;
-using GestaoDePessoas.Application.ViewModels.Base;
 using Microsoft.AspNetCore.Mvc;
-using GestaoDePessoas.Application.Notificacoes;
-using GestaoDePessoas.Dominio.Core.Models;
 using GestaoDePessoas.Dominio.Interfaces;
+using GestaoDePessoas.Dominio.Core.Models;
+using GestaoDePessoas.Application.Notificacoes;
+using GestaoDePessoas.Application.ViewModels.Base;
+using GestaoDePessoas.Application.Services.Base.Interfaces;
 
 namespace GestaoDePessoas.API.V1.Base
 {
@@ -19,7 +19,6 @@ namespace GestaoDePessoas.API.V1.Base
         protected readonly IMapper _mapper;
         protected readonly IBaseCadastroService<TModel, TViewModel, TViewModelAdicionar, TViewModelAtualizar, TValidator> _appService;
         protected readonly IRepository<TModel> _repository;
-
 
         protected virtual string _NomeController { get; set; }
         protected virtual string _NomeCompletoController { get; set; }
@@ -53,9 +52,9 @@ namespace GestaoDePessoas.API.V1.Base
 
             if (!_notificador.TemNotificacao())
             {
-                TModel modelRetorno = await _repository.ObterPorId(model.Id);
+                TModel modelRetorno = await _repository.ObterPorId(model.ID);
                 TViewModel retorno = _mapper.Map<TViewModel>(modelRetorno);
-                return CustomResponseAdd(string.Format("api/v1/{0}/{1}", _NomeController, retorno.Id), retorno);
+                return CustomResponseAdd(string.Format("api/v1/{0}/{1}", _NomeController, retorno.ID), retorno);
             }
 
             return CustomResponse();
@@ -63,7 +62,7 @@ namespace GestaoDePessoas.API.V1.Base
 
         public virtual async Task<IActionResult> Put(Guid id, [FromBody] TViewModelAtualizar viewmodel)
         {
-            if (id != viewmodel.Id)
+            if (id != viewmodel.ID)
             {
                 NotificarErro("O ID informado não é o mesmo que foi passado na query");
                 return CustomResponse(viewmodel);
@@ -74,7 +73,7 @@ namespace GestaoDePessoas.API.V1.Base
 
             await _appService.Atualizar(viewmodel);
 
-            TViewModel retorno = _mapper.Map<TViewModel>(_repository.Buscar(m => m.Id.Equals(viewmodel.Id)).Result.FirstOrDefault());
+            TViewModel retorno = _mapper.Map<TViewModel>(_repository.Buscar(m => m.ID.Equals(viewmodel.ID)).Result.FirstOrDefault());
 
             if (!_notificador.TemNotificacao())
             {
@@ -86,7 +85,7 @@ namespace GestaoDePessoas.API.V1.Base
 
         public virtual async Task<IActionResult> Delete(Guid id)
         {
-            TModel model = _repository.Buscar(m => m.Id.Equals(id)).Result.FirstOrDefault();
+            TModel model = _repository.Buscar(m => m.ID.Equals(id)).Result.FirstOrDefault();
 
             if (model == null)
                 return NotFound();
@@ -103,7 +102,7 @@ namespace GestaoDePessoas.API.V1.Base
 
         public virtual async Task<IActionResult> Get(Guid id)
         {
-            TModel model = _repository.Buscar(m => m.Id.Equals(id)).Result.FirstOrDefault();
+            TModel model = _repository.Buscar(m => m.ID.Equals(id)).Result.FirstOrDefault();
 
             if (model == null)
                 return NotFound();

@@ -1,5 +1,5 @@
-﻿using GestaoDePessoas.Dominio.Core.Messages;
-using FluentValidation.Results;
+﻿using FluentValidation.Results;
+using GestaoDePessoas.Dominio.Core.Messages;
 
 namespace GestaoDePessoas.Dominio.Core.Mediator
 {
