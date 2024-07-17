@@ -1,5 +1,4 @@
-﻿using GestaoDePessoas.Dominio.EnderecoRoot;
-using GestaoDePessoas.Dominio.Interfaces;
+﻿using GestaoDePessoas.Dominio.Interfaces;
 
 namespace GestaoDePessoas.Dominio.ClienteRoot.Repository
 {

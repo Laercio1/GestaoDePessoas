@@ -1,6 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using GestaoDePessoas.Dominio.MarcaRoot;
-//using GestaoDePessoas.Dominio.PessoaRoot;
 using GestaoDePessoas.Dominio.PedidoRoot;
 using GestaoDePessoas.Dominio.ProdutoRoot;
 using GestaoDePessoas.Dominio.ClienteRoot;

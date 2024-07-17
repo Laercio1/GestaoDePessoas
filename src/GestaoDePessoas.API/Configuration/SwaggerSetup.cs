@@ -73,6 +73,7 @@ namespace GestaoDePessoas.Services.API.Configurations
                     foreach (var description in provider.ApiVersionDescriptions)
                     {
                         options.SwaggerEndpoint($"/swagger/{description.GroupName}/swagger.json", description.GroupName.ToUpperInvariant());
+                        //options.InjectStylesheet("/swagger-ui/SwaggerDark.css");
                     }
                 });
         }
